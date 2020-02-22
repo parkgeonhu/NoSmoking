@@ -11,6 +11,9 @@ from django.db import models
 def now_korea() -> datetime.datetime:
     return datetime.datetime.now(timezone('Asia/Seoul'))
 
+def calTimeGap(quit_date):
+    return datetime.datetime.today() - quit_date
+    
 
 def clean_phone(phone: str) -> str:
     return phone.replace('-', '')

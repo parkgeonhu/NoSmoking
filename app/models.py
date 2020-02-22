@@ -13,9 +13,9 @@ class User(AbstractUser, ModelMixin):
     def __str__(self):
         return self.phone
 
-    @property
-    def is_store_owner(self):
-        try:
-            return self.store is not None
-        except Store.DoesNotExist:
-            return False
+        
+class Record(ModelMixin):
+    owner = models.OneToOneField(User, models.CASCADE, related_name='records')
+    is_active = models.BooleanField(default=True)
+    quit_date = models.DateTimeField()
+    
